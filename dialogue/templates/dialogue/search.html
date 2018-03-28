@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content_block %}
+ <form method="GET">
+   {% csrf_token %}
+   {{ filter.form.as_p }}
+   <button type="submit" class="btn btn-success">Search</button>
+   </form>
+   {% for charactor in filter.qs %}
+   <li>
+     <div class="alert alert-success" role="alert">
+     <h4 class="alert-heading">{{charactor.charactor}}</h4>
+     <img src="{{blat.pic_url}}">
+     <p>{{charactor.text}}</p>
+     <hr>
+     <a href="{{blat.source}}" class="alert-link">Link to the source</a>
+     <p class="mb-0">created on {{charactor.created_on|naturaltime}} via @{{charactor.author}} </span></p>
+     <p>
+        <a class="btn btn-primary" href="{% url 'dialogue:blat_comment_url' pk=charactor.pk %}" role="button">Comment</a>
+        <a class="btn btn-primary" href="{% url 'dialogue:blat_likes_url' pk=charactor.pk %}" role="button">Likes</a>
+     </p>
+   </div>
+   {% endfor %}
+{% endblock %}

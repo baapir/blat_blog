@@ -3,6 +3,7 @@ from django.views import generic
 from . import models
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
+from .filters import BlatFilter
 
 # Create your views here.
 class BlatListView(generic.ListView):
@@ -42,3 +43,8 @@ def dialogue_like(request, pk):
         else:
             like.save()
         return redirect('dialogue:blat_detail_url', pk=blat.pk)
+
+def search(request):
+    charactor_list = models.Blat.objects.all()
+    charactor_filter = BlatFilter(request.GET, queryset=charactor_list)
+    return render(request, 'dialogue/search.html', {'filter':charactor_filter})
