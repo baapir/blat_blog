@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content_block %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">{{blat.charactor}}</h4>
+  <img src="{{blat.pic_url}}">
+  <p>{{blat.text}}</p>
+  <hr>
+  <a href="{{blat.source}}" class="alert-link">Link to the source</a>
+  <p class="mb-0">created on {{blat.created_on|naturaltime}} via @{{blat.author}} </span></p>
+  <p>
+     <a class="btn btn-primary" href="{% url 'dialogue:blat_comment_url' pk=blat.pk %}" role="button">Comment</a>
+     <a class="btn btn-primary" href="{% url 'dialogue:blat_likes_url' pk=blat.pk %}" role="button">Likes</a>
+  </p>
+</div>
+
+{% for comment in blat.comments.all %}
+<div class="alert alert-success" role="alert">
+  <p>{{comment.text}}</p>
+  <hr>
+  <p class="mb-0">created on {{comment.created_on|naturaltime}} via @{{comment.author}} </span></p>
+</div>
+{% endfor %}
+{% endblock %}

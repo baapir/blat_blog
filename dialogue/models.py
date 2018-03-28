@@ -16,13 +16,13 @@ class Blat(models.Model):
     def __str__(self):
         return self.text[:50]
 
-    def totall_likes(self):
-        return self.like_set.count()
+    ##def totall_likes(self):
+    ##    return self.like_set.count()
 
 
 class Like(models.Model):
-    blat = models.ForeignKey('Blat', on_delete=models.CASCADE)
-    user = models.ForeignKey(user, on_delete=models.CASCADE)
+    blat = models.ForeignKey('Blat', on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
 class Comment(models.Model):

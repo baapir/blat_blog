@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content_block %}
+
+<div class="alert alert-success" role="alert">
+{% if not blat.likes.count %}
+<h1>Noone liked this dialogue</h1>
+{% else %}
+<h1>thease users likes this dialogue!!</h1>
+{% for like in blat.likes.all %}
+<p>@{{like.user}}</p>
+{% endfor %}
+{% endif %}
+</div>
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Like">
+</form>
+
+{% endblock %}

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'accounts',
     'dialogue',
 ]
@@ -124,4 +125,4 @@ STATIC_URL = '/static/'
 
 
 
-LOGIN_REDIRECT_URL = 'dialogue_list_url'
+LOGIN_REDIRECT_URL = 'dialogue:blat_list_url'
