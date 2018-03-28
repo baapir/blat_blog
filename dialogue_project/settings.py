@@ -126,3 +126,4 @@ STATIC_URL = '/static/'
 
 
 LOGIN_REDIRECT_URL = 'dialogue:blat_list_url'
+LOGOUT_REDIRECT_URL = 'dialogue:blat_list_url'

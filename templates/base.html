@@ -20,9 +20,12 @@
               @{{user.username}}
              </span>
            </li>
+           <li class="nav-item">
+             <a class="nav-link" href="{% url 'accounts:accounts_logout_url' %}">Log out</a>
+           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="{% url 'accounts:accounts_signup_url' %}">Signup</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,7 +39,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="{% url 'accounts:accounts_login_url' %}">Login</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
